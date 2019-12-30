@@ -12,6 +12,12 @@ def DBMouseLeft(event):
 	print(lb.get(lb.curselection()), end='')
 	root.destroy()
 
+def EnterKey(key):
+	global root
+	global lb
+	print(lb.get(lb.curselection()), end='')
+	root.destroy()
+
 def findInfoFile():
 	global currdir
 	tempdir = currdir
@@ -50,6 +56,8 @@ lb.pack(side=LEFT, fill=Y, expand=YES)
 #lb.insert('end', "")
 #lb.insert(ANCHOR, 'Python', 'Kotlin', 'Swift', 'Ruby', 'sel01', 'sel02', 'sel03', 'sel04', 'sel05', 'sel06', 'sel07', 'sel08', 'sel09', 'sel10')
 lb.bind('<Double-1>', DBMouseLeft)
+lb.bind('<Return>', EnterKey)
+lb.focus_set()
 scroll = Scrollbar(root, command=lb.yview)
 scroll.pack(side=RIGHT, fill=Y)
 lb.configure(yscrollcommand=scroll.set)
